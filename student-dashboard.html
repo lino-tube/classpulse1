@@ -1,0 +1,41 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>ClassPulse | Student Dashboard</title><link rel="stylesheet" href="css/styles.css"></head><body data-role="student"><main class="student-shell"><header class="student-topbar">
+  <div class="student-brand"><span class="brand-dot"></span> ClassPulse</div>
+  <nav class="student-nav" aria-label="Student navigation">
+    <a data-nav-page="student-dashboard.html" href="student-dashboard.html">Dashboard</a>
+    <a data-nav-page="student-checkin.html" href="student-checkin.html">Check In</a>
+    <a data-nav-page="visual-learning.html" href="visual-learning.html">Visual Learning</a><a data-nav-page="student-support.html" href="student-support.html">One-on-One Help</a><button type="button" data-logout>Logout</button>
+  </nav>
+</header><div class="page-heading"><div><h1>Welcome, Student</h1><p>Share a quick classroom signal so your lecturer can respond while the lesson is still happening.</p></div></div><section class="class-banner"><div><div class="class-label">Current Class</div><h1>PROG6112</h1><p>Java Arrays Practical</p></div><div><div class="class-label">Lecturer</div><strong>Current Lecturer</strong></div><div><div class="class-label">Session status</div><div class="status-live">LIVE</div></div></section><section class="card pulse-card" aria-labelledby="pulseHeading">
+  <h2 id="pulseHeading">How are you doing with the current activity?</h2>
+  <p>Select the option that best represents your understanding right now.</p>
+  <form id="pulseForm" novalidate>
+    <input type="hidden" id="pulseStatus" name="status">
+    <div class="choice-grid" role="group" aria-label="Understanding status">
+      <button class="choice-card" type="button" data-status="understand" aria-pressed="false"><div class="choice-title">I Understand</div><div class="choice-copy">I am comfortable with the current concept.</div></button>
+      <button class="choice-card" type="button" data-status="unsure" aria-pressed="false"><div class="choice-title">I’m Unsure</div><div class="choice-copy">I understand some of it but need another example.</div></button>
+      <button class="choice-card" type="button" data-status="stuck" aria-pressed="false"><div class="choice-title">I’m Stuck</div><div class="choice-copy">I need help before moving forward.</div></button>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label for="topic">Where are you struggling?</label><select class="form-control" id="topic" name="topic"><option value="">Select a topic</option><option>Creating arrays</option><option>Array Indexing</option><option>Looping through arrays</option><option>One-dimensional arrays</option><option>Two-dimensional arrays</option></select></div>
+      <div class="form-group"><label for="note">Optional note</label><textarea class="form-control" id="note" name="note" placeholder="Briefly explain what is confusing you…"></textarea></div>
+    </div>
+    <div class="inline-error" id="pulseError" role="alert"></div>
+    <button class="btn btn-primary" type="submit">Submit Check-in</button>
+  </form>
+</section>
+<section class="card section-space voice-card" aria-labelledby="voiceHeading">
+  <div class="voice-heading"><div><span class="voice-eyebrow">PARTICIPATE YOUR WAY</span><h2 id="voiceHeading">My Voice</h2></div><span class="voice-tag">Type · Share · Be heard</span></div>
+  <p>A quieter way to join the conversation. Type instead of speaking, take your time, and choose who hears you. Available to every student.</p>
+  <form id="voiceForm">
+    <div class="form-row"><div class="form-group"><label for="voiceName">Name to introduce you</label><input id="voiceName" class="form-control" placeholder="e.g. Sam" maxlength="40" required autocomplete="given-name"></div>
+    <div class="form-group"><label for="voiceIntent">I would like to…</label><select id="voiceIntent" class="form-control"><option value="question">Ask a question</option><option value="answer">Answer a question</option><option value="help">Say I don’t understand</option></select></div></div>
+    <div class="form-group"><label for="voiceText">What would you like to say?</label><textarea id="voiceText" class="form-control" placeholder="Type your question or answer here…" maxlength="1000" required aria-describedby="voiceCount"></textarea><div class="form-hint" id="voiceCount">0 / 1000 characters</div></div>
+    <fieldset class="voice-destinations"><legend>Choose how to share</legend><label><input type="radio" name="voiceDelivery" value="private" checked> <strong>Send privately to lecturer</strong><span>Only shown in the lecturer’s private inbox. Never read aloud.</span></label><label><input type="radio" name="voiceDelivery" value="classroom"> <strong>Speak to the class</strong><span>The lecturer plays your message through the classroom speaker when it is your turn.</span></label></fieldset>
+    <div class="form-row"><div class="form-group"><label for="voiceChoice">Speaking voice</label><select id="voiceChoice" class="form-control"><option value="">Device default voice</option></select></div><div class="form-group"><label for="voiceRate">Speaking speed</label><select id="voiceRate" class="form-control"><option value="0.8">Slower</option><option value="1" selected>Normal</option><option value="1.2">Faster</option></select></div></div>
+    <p class="form-hint">Preview plays aloud on your device. Speech uses your browser’s available voices. Connect a Bluetooth or wired speaker in your device settings to change audio output.</p>
+    <div class="voice-actions"><button type="button" id="voicePreview" class="btn btn-secondary">Preview aloud</button><button type="button" data-stop-voice class="btn btn-secondary">Stop voice</button><button type="submit" class="btn btn-primary" id="voiceSend">Send privately</button></div>
+    <p id="voiceFeedback" role="status" aria-live="polite"></p>
+  </form>
+  <div class="voice-demo-note">Prototype demo: messages appear in lecturer tabs on this browser. Private delivery is simulated; use sample text.</div>
+  <h3>Your contributions</h3><div id="voiceSent"></div>
+</section><section class="card section-space"><h2>Learn in the way that works for you</h2><p>See a picture explanation during class, or request individual help during the live lesson.</p><div class="voice-actions"><a class="btn btn-secondary" href="visual-learning.html">Open Visual Learning</a><a class="btn btn-primary" href="student-support.html">Request One-on-One Help</a></div></section></main><script src="js/app.js"></script><script src="js/live.js"></script><script src="js/auth.js"></script><script src="js/student.js"></script><script src="js/voice.js"></script></body></html>
